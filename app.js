@@ -35,7 +35,7 @@ bot.on("message", (msg) => {
 							var embed = createEmbed(
 								"#00ff00",
 								"Status Check",
-								":white_check_mark: Shit works yo"
+								`:white_check_mark: Website is up.`
 							);
 
 							embed.addFields(
@@ -54,19 +54,21 @@ bot.on("message", (msg) => {
 							var embed = createEmbed(
 								"#ff0000",
 								"Status Check",
-								":x: Shit does not work yo"
+								`:x: Website appears to be down.`
 							);
 
-							embed.addFields(
-								{ name: "Host", value: res["host"] },
-								{ name: "IP", value: res["numeric_host"], inline: true },
-								{ name: "Ping", value: `No response`, inline: true },
-								{
-									name: "Packet Loss",
-									value: `${res["packetLoss"]}%`,
-									inline: true,
-								}
-							);
+							embed
+								.addFields(
+									{ name: "Host", value: res["host"] },
+									{ name: "IP", value: res["numeric_host"], inline: true },
+									{ name: "Ping", value: `No response`, inline: true },
+									{
+										name: "Packet Loss",
+										value: `${res["packetLoss"]}%`,
+										inline: true,
+									}
+								)
+								.setImage("https://i.imgur.com/6NfmQ.jpeg");
 							msg.reply({ embeds: [embed] });
 						}
 					})
